@@ -1,0 +1,16 @@
+//stepper num
+@mixin getStepNums($num) {
+  @for $i from 1 through $num {
+    &:nth-child(#{$i}) .circle-container::after {
+      content: '#{$i}';
+      font-family: 'Nunito Sans', sans-serif;
+    }
+  }
+}
+
+// RWD
+@mixin rwd($width) {
+  @media screen and (min-width: $width) {
+    @content;
+  }
+}

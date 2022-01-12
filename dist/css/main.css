@@ -1,0 +1,203 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 2.375rem;
+  margin: 1rem 0 1.5rem;
+}
+
+.d-none {
+  display: none;
+}
+
+.container {
+  margin: auto 15px;
+  width: 100%;
+}
+
+@media screen and (min-width: 375px) {
+  .container {
+    margin: auto 10.3rem;
+  }
+}
+
+@media screen and (min-width: 375px) {
+  h1 {
+    font-size: 2rem;
+    margin: 6rem 0 3rem;
+  }
+}
+
+.main__stepper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.main__stepper .step {
+  text-align: center;
+  color: #AFB1BD;
+  position: relative;
+}
+
+.main__stepper .step:nth-child(1) .circle-container::after {
+  content: "1";
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+.main__stepper .step:nth-child(2) .circle-container::after {
+  content: "2";
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+.main__stepper .step:nth-child(3) .circle-container::after {
+  content: "3";
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+.main__stepper .step:not(:last-child) {
+  margin-right: 7.75rem;
+}
+
+.main__stepper .step .circle-container {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  border: 1px solid #AFB1BD;
+}
+
+.main__stepper .step .circle-container::after {
+  line-height: 200%;
+}
+
+@media screen and (min-width: 375px) {
+  .main__stepper .step .circle-container {
+    height: 1.5rem;
+    width: 1.5rem;
+    margin-right: 0.5rem;
+  }
+  .main__stepper .step .circle-container::after {
+    line-height: 150%;
+  }
+}
+
+.main__stepper .step .label-container {
+  display: none;
+}
+
+@media screen and (min-width: 375px) {
+  .main__stepper .step .label-container {
+    display: initial;
+  }
+}
+
+.main__stepper .step .connect-line {
+  display: block;
+  width: 3.75rem;
+  height: 2px;
+  background-color: #F0F0F5;
+  position: absolute;
+  top: 1rem;
+  left: calc(100% + 2rem);
+}
+
+@media screen and (min-width: 375px) {
+  .main__stepper .step .connect-line {
+    top: 0.75rem;
+  }
+}
+
+.main__stepper .step:nth-child(1) .circle-container {
+  color: #FFFFFF;
+  background-color: #2A2A2A;
+  border: 1px solid #2A2A2A;
+}
+
+.main__stepper .step:nth-child(1) .connect-line {
+  background-color: #000000;
+}
+
+.main__stepper .step.active .circle-container {
+  color: #2A2A2A;
+  border: 1px solid #2A2A2A;
+}
+
+.main__stepper .step.checked .circle-container {
+  color: #FFFFFF;
+  background-color: #333333;
+  border: 1px solid #333333;
+}
+
+.main__stepper .step.checked .circle-container::after {
+  content: '\2714';
+}
+
+.main__stepper .step.active .connect-line, .main__stepper .step.checked .connect-line {
+  background-color: #000000;
+}
+
+.main__stepper .step.active .label-container, .main__stepper .step.checked .label-container {
+  color: #2A2A2A;
+}
+
+@media screen and (min-width: 375px) {
+  .main__stepper .step {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,104 @@
+@import './reset';
+@import './mixin';
+@import './variable';
+
+.container {
+  margin: auto 15px;
+  width: 100%;
+  @include rwd($tablet) {
+    margin: auto 10.3rem;
+  }
+}
+
+h1 {
+  @include rwd($tablet) {
+    font-size: 2rem;
+    margin: 6rem 0 3rem;
+  }
+}
+
+.main__stepper {
+  display: flex;
+  .step {
+    text-align: center; 
+    @include getStepNums(3);
+    color: #AFB1BD;
+    position: relative;
+    &:not(:last-child) {
+      margin-right: 7.75rem;
+    }
+    .circle-container {
+      height: 2rem;
+      width: 2rem;
+      border-radius: 50%;
+      border: 1px solid #AFB1BD;
+      &::after {
+        line-height: 200%;
+      }
+      @include rwd($tablet) {
+        height: 1.5rem;
+        width: 1.5rem;
+        margin-right: 0.5rem;
+        &::after {
+          line-height: 150%;
+        }
+      }
+    }
+    .label-container {
+      display: none; // pc 在顯示
+      @include rwd($tablet) {
+        display: initial;
+      }
+    }
+    .connect-line {
+      display: block;
+      width: 3.75rem;
+      height: 2px;
+      background-color: #F0F0F5;
+      position: absolute;
+      top: 1rem;
+      left: calc(100% + 2rem);
+      @include rwd($tablet) {
+        top: 0.75rem;
+      }
+    }
+    &:nth-child(1) {
+      .circle-container {
+        color: #FFFFFF;
+        background-color: #2A2A2A;
+        border: 1px solid #2A2A2A;
+      }
+      .connect-line {
+        background-color: #000000;
+      }
+    }
+    &.active {
+      .circle-container {
+        color: #2A2A2A;
+        border: 1px solid #2A2A2A;
+      }
+    }
+    &.checked {
+      .circle-container {
+        color: #FFFFFF;
+        background-color: #333333;
+        border: 1px solid #333333;
+      }
+      .circle-container::after {
+        content: '\2714';
+      }
+    }
+    &.active, &.checked {
+      .connect-line {
+        background-color: #000000;
+      }
+      .label-container {
+        color: #2A2A2A;
+      }
+    }
+    @include rwd($tablet) {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
