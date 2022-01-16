@@ -50,9 +50,166 @@
           <div class="label-container">付款資訊</div>
         </div>
       </div>
-      <form action="" class="main__form"></form>
-      <div class="main__cart"></div>
-      <div class="main__button"></div>
+      <div class="main__form">
+        <form id="a-form">
+          <div class="main__form__content">
+            <div class="part d-none">
+              <h3 class="main__form-title">寄送地址</h3>
+              <div class="main__form__grid-area-part-one">
+              <div class="form-row gender">
+                <label for="gender">稱謂</label>
+                <div class="select-wrapper">
+                  <select name="a-type" id="gender">
+                    <option value="">先生</option>
+                    <option value="">小姐</option>
+                    <option value="">其他</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row name">
+                <label for="name">姓名</label>
+                <input id="name" type="text" placeholder="請輸入姓名">
+              </div>
+              <div class="form-row phone">
+                <label for="phone">電話</label>
+                <input id="phone" type="text" placeholder="請輸入行動電話">
+              </div>
+              <div class="form-row email">
+                <label for="email">Email</label>
+                <input id="email" type="mail" placeholder="請輸入電子郵件">
+              </div>
+              <div class="form-row city">
+                <label for="city">縣市</label>
+                <div class="select-wrapper">
+                  <select name="a-type" id="city" required>
+                    <option value="" disabled selected>請選擇縣市</option>
+                    <option value="">台北市</option>
+                    <option value="">新北市</option>
+                    <option value="">台中市</option>
+                    <option value="">高雄市</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row address">
+                <label for="address">地址</label>
+                <input id="address" type="text" placeholder="請輸入地址">
+              </div>
+              </div>
+            </div>
+            <div class="part d-none">
+              <h3 class="main__form-title">運送方式</h3>
+              <div class="main__form__grid-area-part-two">
+                <div class="form-row standard-delivery">
+                  <label for="standard-delivery" class="standard-delivery">
+                    <input id="standard-delivery" type="radio" name="delivery">
+                    <div class="standard-delivery__wrapper">
+                      <div class="standard-delivery__wrapper__title">
+                        <span>標準運送</span>
+                        <span class="standard-delivery__wrapper__fee">免費</span>
+                      </div>
+                      <div class="standard-delivery__wrapper__takesTime">
+                        <span>約 3~7 個工作天</span>
+                      </div>
+                    </div>
+                  </label>
+                </div>
+                <div class="form-row dhl-delivery">
+                  <label for="dhl-delivery" class="dhl-delivery">
+                    <input id="dhl-delivery" type="radio" name="delivery">
+                    <div class="dhl-delivery__wrapper">
+                      <div class="dhl-delivery__wrapper__title">
+                        <span>DHL 貨運</span>
+                        <span class="dhl-delivery__wrapper__fee">500</span>
+                      </div>
+                      <div class="dhl-delivery__wrapper__takesTime">
+                        <span>48小時內送達</span>
+                      </div>
+                    </div>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="part d-none">
+              <h3 class="main__form-title">付款資訊</h3>
+              <div class="main__form__grid-area-part-three">
+                <div class="form-row cardOwner">
+                  <label for="cardOwner">持卡人姓名</label>
+                  <input id="cardOwner" type="text" placeholder="John Doe">
+                </div>
+                <div class="form-row cardNum">
+                  <label for="cardNum">卡號</label>
+                  <input id="cardNum" type="text" placeholder="1111 2222 3333 4444">
+                </div>
+                <div class="form-row thru">
+                  <label for="thru">有效期限</label>
+                  <input id="thru" type="text" placeholder="MM/YY">
+                </div>
+                <div class="form-row csc">
+                  <label for="csc">CVC/CCV</label>
+                  <input id="csc" type="text" placeholder="123">
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="main__cart">
+        <div class="main__cart__title">
+          <h4>購物籃</h4>
+        </div>
+        <div class="main__cart__list">
+          <div class="main__cart__item">
+            <div class="main__cart__item__img">
+              <img src="./src/images/cart_item_01.png" alt="">
+            </div>
+            <div class="main__cart__item__title">
+              <span>破壞補丁修身牛仔褲</span>
+            </div>
+            <div class="main__cart__item__price">
+              3999
+            </div>
+            <div class="main__cart__item__counter">
+              <div class="main__cart__item__counter__minus"></div>
+              <div class="main__cart__item__counter__amount">1</div>
+              <div class="main__cart__item__counter__plus"></div>
+            </div>
+          </div>
+          <div class="main__cart__item">
+            <div class="main__cart__item__img">
+              <img src="./src/images/cart_item_02.png" alt="">
+            </div>
+            <div class="main__cart__item__title">
+              <span>刷色直筒牛仔褲</span>
+            </div>
+            <div class="main__cart__item__price">
+              1299
+            </div>
+            <div class="main__cart__item__counter">
+              <div class="main__cart__item__counter__minus"></div>
+              <div class="main__cart__item__counter__amount">1</div>
+              <div class="main__cart__item__counter__plus"></div>
+            </div>
+          </div>
+        </div>
+        <div class="main__cart__footer">
+          <div class="main__cart__footer__fee">
+            <div class="title">運費</div>
+            <div class="fee"><span class="fee">免費</span></div>
+          </div>
+          <div class="main__cart__footer__total">
+            <div class="title">小計</div>
+            <div class="fee"><span class="fee">5298</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="main__button">
+        <div class="main__button__previous">
+          <button class="previous">&#8592 上一步</button>
+        </div>
+        <div class="main__button__next">
+          <button class="next">下一步 &#8594</button>
+        </div>
+      </div>
     </main>
     <footer class="container d-none">
       <div class="footer__logo"></div>

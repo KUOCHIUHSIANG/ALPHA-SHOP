@@ -1,4 +1,15 @@
-//stepper num
+// RWD
+@mixin rwd($width) {
+  @media screen and (min-width: $width) {
+    @content;
+  }
+}
+
+// header container
+
+
+// main container
+// stepper num
 @mixin getStepNums($num) {
   @for $i from 1 through $num {
     &:nth-child(#{$i}) .circle-container::after {
@@ -8,9 +19,22 @@
   }
 }
 
-// RWD
-@mixin rwd($width) {
-  @media screen and (min-width: $width) {
-    @content;
-  }
+// form grid system
+@mixin formGrid($columns, $rows) {
+  display: grid;
+  row-gap: 1.5rem;
+  grid-template-columns: $columns;
+  grid-template-rows: $rows;
+}
+
+// cart calc signs design
+@mixin calcSigns() {
+  content: "";
+  width: 10.84px;
+  height: 1.8px;
+  background-color: #000000;
+  border-radius: 2px;
+  position: absolute;
+  top: 13px;
+  left: 8px;
 }
