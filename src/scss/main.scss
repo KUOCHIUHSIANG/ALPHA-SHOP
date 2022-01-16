@@ -1,8 +1,7 @@
-@import './reset';
-@import './mixin';
-@import './extend';
-@import './variable';
-
+@import "./reset";
+@import "./mixin";
+@import "./extend";
+@import "./variable";
 
 .container {
   margin: auto 15px;
@@ -11,384 +10,462 @@
   }
 }
 
-h1 {
+main.container {
   @include rwd($tablet) {
-    font-size: 2rem;
-    margin: 6rem 0 3rem;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(4, auto);
+    column-gap: 30px;
   }
-}
+  
+  h1.main__title {
+    @include rwd($tablet) {
+      grid-area: title;
+      grid-column: 1/2 ;
+      grid-row: 1/2 ;
+      font-size: 2rem;
+      margin: 6rem 0 3rem;
+    }
+  }
 
-.main__stepper {
-  display: flex;
-  .step {
-    text-align: center; 
-    @include getStepNums(3);
-    color: #AFB1BD;
-    position: relative;
-    &:not(:last-child) {
-      margin-right: 7.75rem;
+  .main__stepper {
+    display: flex;
+    @include rwd($tablet) {
+      grid-area: stepper;
+      grid-column: 1/7 ;
+      grid-row: 2/3;
     }
-    .circle-container {
-      height: 2rem;
-      width: 2rem;
-      border-radius: 50%;
-      border: 1px solid #AFB1BD;
-      &::after {
-        line-height: 200%;
+    .step {
+      text-align: center;
+      @include getStepNums(3);
+      color: #afb1bd;
+      position: relative;
+      &:not(:last-child) {
+        margin-right: 7.75rem;
       }
-      @include rwd($tablet) {
-        height: 1.5rem;
-        width: 1.5rem;
-        margin-right: 0.5rem;
+      .circle-container {
+        height: 2rem;
+        width: 2rem;
+        border-radius: 50%;
+        border: 1px solid #afb1bd;
         &::after {
-          line-height: 150%;
+          line-height: 200%;
         }
-      }
-    }
-    .label-container {
-      display: none; // pc 在顯示
-      @include rwd($tablet) {
-        display: initial;
-      }
-    }
-    .connect-line {
-      display: block;
-      width: 3.75rem;
-      height: 2px;
-      background-color: #F0F0F5;
-      position: absolute;
-      top: 1rem;
-      left: calc(100% + 2rem);
-      @include rwd($tablet) {
-        top: 0.75rem;
-      }
-    }
-    &:nth-child(1) {
-      .circle-container {
-        color: #FFFFFF;
-        background-color: #2A2A2A;
-        border: 1px solid #2A2A2A;
-      }
-      .connect-line {
-        background-color: #000000;
-      }
-    }
-    &.active {
-      .circle-container {
-        color: #2A2A2A;
-        border: 1px solid #2A2A2A;
-      }
-    }
-    &.checked {
-      .circle-container {
-        color: #FFFFFF;
-        background-color: #333333;
-        border: 1px solid #333333;
-      }
-      .circle-container::after {
-        content: '\2714';
-      }
-    }
-    &.active, &.checked {
-      .connect-line {
-        background-color: #000000;
+        @include rwd($tablet) {
+          height: 1.5rem;
+          width: 1.5rem;
+          margin-right: 0.5rem;
+          &::after {
+            line-height: 150%;
+          }
+        }
       }
       .label-container {
-        color: #2A2A2A;
+        display: none; // pc 在顯示
+        @include rwd($tablet) {
+          display: initial;
+        }
       }
-    }
-    @include rwd($tablet) {
-      display: flex;
-      align-items: center;
-    }
-  }
-}
-
-.main__form {
-  margin: 1.5rem 0 2rem;
-  @include rwd($tablet) {
-    margin: 4rem 0 3rem;
-  }
-  h3 {
-    font-weight: 700;
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
-  &__grid-area-part-one {
-    @include formGrid(repeat(2, 1fr) 30px repeat(3, 1fr), repeat(5, 1fr));
-    grid-template-areas: 
-    "gender gender . name name name"
-    "phone phone phone phone phone phone"
-    "email email email email email email"
-    "city city city city city city"
-    "address address address address address address";
-    @include rwd($tablet) {
-      grid-template-columns: repeat(2, 1fr) 30px 1fr 30px 3fr;
-      grid-template-rows: repeat(3, 1fr);
-      grid-template-areas: 
-      "gender gender . name name name"
-      "phone phone phone phone . email"
-      "city city . address address address";
-    }
-  }
-  &__grid-area-part-two {
-    @include formGrid(1fr, repeat(2, 1fr));
-    grid-template-areas: 
-    "standard"
-    "dhl";
-    @include rwd($tablet) {
-      grid-template-columns: repeat(5, 1fr) 1fr;
-      grid-template-rows: repeat(2, 1fr);
-      grid-template-areas: 
-      "standard standard standard standard standard ."
-      "dhl dhl dhl dhl dhl .";
-    }
-  }
-  &__grid-area-part-three {
-    @include formGrid(1fr 30px 1fr, repeat(3, 1fr));
-    grid-template-areas: 
-    "cardOwner cardOwner cardOwner"
-    "cardNum cardNum cardNum"
-    "thru . csc";
-    @include rwd($tablet) {
-      grid-template-columns: repeat(3, 1fr) 30px repeat(3, 1fr);
-      grid-template-rows: repeat(3, 1fr);
-      grid-template-areas: 
-      "cardOwner cardOwner cardOwner cardOwner cardOwner . ."
-      "cardNum cardNum cardNum cardNum cardNum . ."
-      "thru thru thru . csc csc csc";
-    }
-  }
-  .form-row {
-    width: 100%;
-    >label {
-      display: block;
-      margin-bottom: 0.5rem;
-      color: #808080;
-      font-weight: 700;
-      font-size: 12px;
-      &.standard-delivery, &.dhl-delivery {
+      .connect-line {
+        display: block;
+        width: 3.75rem;
+        height: 2px;
+        background-color: #f0f0f5;
+        position: absolute;
+        top: 1rem;
+        left: calc(100% + 2rem);
+        @include rwd($tablet) {
+          top: 0.75rem;
+        }
+      }
+      &:nth-child(1) {
+        .circle-container {
+          color: #ffffff;
+          background-color: #2a2a2a;
+          border: 1px solid #2a2a2a;
+        }
+        .connect-line {
+          background-color: #000000;
+        }
+      }
+      &.active {
+        .circle-container {
+          color: #2a2a2a;
+          border: 1px solid #2a2a2a;
+        }
+      }
+      &.checked {
+        .circle-container {
+          color: #ffffff;
+          background-color: #333333;
+          border: 1px solid #333333;
+        }
+        .circle-container::after {
+          content: "\2714";
+        }
+      }
+      &.active,
+      &.checked {
+        .connect-line {
+          background-color: #000000;
+        }
+        .label-container {
+          color: #2a2a2a;
+        }
+      }
+      @include rwd($tablet) {
         display: flex;
         align-items: center;
-        border: 1px solid #F0F0F5;
-        border-radius: 4px;
-        margin-bottom: 0;
-        padding: 11px 20px;
-        font-weight: 400;
+      }
+    }
+  }
+
+  .main__form {
+    margin: 1.5rem 0 2rem;
+    @include rwd($tablet) {
+      grid-area: form;
+      grid-column: 1/7 ;
+      grid-row: 2/5;
+      margin: 4rem 0 3rem;
+    }
+    h3 {
+      font-weight: 700;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    &__grid-area-part-one {
+      @include formGrid(repeat(2, 1fr) 30px repeat(3, 1fr), repeat(5, 1fr));
+      grid-template-areas:
+        "gender gender . name name name"
+        "phone phone phone phone phone phone"
+        "email email email email email email"
+        "city city city city city city"
+        "address address address address address address";
+      @include rwd($tablet) {
+        grid-template-columns: repeat(2, 1fr) 30px 1fr 30px 3fr;
+        grid-template-rows: repeat(3, 1fr);
+        grid-template-areas:
+          "gender gender . name name name"
+          "phone phone phone phone . email"
+          "city city . address address address";
+      }
+    }
+    &__grid-area-part-two {
+      @include formGrid(1fr, repeat(2, 1fr));
+      grid-template-areas:
+        "standard"
+        "dhl";
+      @include rwd($tablet) {
+        grid-template-columns: repeat(5, 1fr) 1fr;
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-areas:
+          "standard standard standard standard standard ."
+          "dhl dhl dhl dhl dhl .";
+      }
+    }
+    &__grid-area-part-three {
+      @include formGrid(1fr 30px 1fr, repeat(3, 1fr));
+      grid-template-areas:
+        "cardOwner cardOwner cardOwner"
+        "cardNum cardNum cardNum"
+        "thru . csc";
+      @include rwd($tablet) {
+        grid-template-columns: repeat(3, 1fr) 30px repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        grid-template-areas:
+          "cardOwner cardOwner cardOwner cardOwner cardOwner . ."
+          "cardNum cardNum cardNum cardNum cardNum . ."
+          "thru thru thru . csc csc csc";
+      }
+    }
+    .form-row {
+      width: 100%;
+      > label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #808080;
+        font-weight: 700;
         font-size: 12px;
-        line-height: 16px;
-        color: #000000;
+        &.standard-delivery,
+        &.dhl-delivery {
+          display: flex;
+          align-items: center;
+          border: 1px solid #f0f0f5;
+          border-radius: 4px;
+          margin-bottom: 0;
+          padding: 11px 20px;
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 16px;
+          color: #000000;
+        }
+        &.standard-delivery {
+          font-family: "Inter", sans-serif;
+        }
+      }
+      .select-wrapper {
+        position: relative;
+        &::after {
+          content: "\25BE";
+          position: absolute;
+          top: 50%;
+          right: 18px;
+          transform: translateY(-50%);
+          color: #2a2a2a;
+        }
+      }
+      select {
+        width: 100%;
+        @extend %input-style;
+        -webkit-appearance: none;
+        &#city {
+          &:invalid {
+            color: #999999;
+          }
+        }
+      }
+      input {
+        width: 100%;
+        @extend %input-style;
+        &::placeholder {
+          color: #999999;
+        }
+        &[type="radio"] {
+          all: unset; // 已包含 -webkit-appearance: none;
+          width: 20px;
+          height: 20px;
+          border: 1px solid #222222;
+          border-radius: 50%;
+          // margin-right: 20px;
+          &:checked {
+            box-shadow: inset 0 0 0 6px #2a2a2a;
+            border: 1px solid #2a2a2a;
+          }
+        }
+      }
+      .standard-delivery__wrapper,
+      .dhl-delivery__wrapper {
+        width: 87%;
+        margin-left: 20px;
+      }
+      .standard-delivery__wrapper__title,
+      .dhl-delivery__wrapper__title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 2px;
+        span:nth-child(1) {
+          font-size: 14px;
+          line-height: 20px;
+        }
+      }
+      .dhl-delivery__wrapper__title {
+        span:nth-child(1) {
+          font-weight: 700;
+        }
+      }
+      &.gender {
+        grid-area: gender;
+      }
+      &.name {
+        grid-area: name;
+      }
+      &.phone {
+        grid-area: phone;
+      }
+      &.email {
+        grid-area: email;
+      }
+      &.city {
+        grid-area: city;
+      }
+      &.address {
+        grid-area: address;
       }
       &.standard-delivery {
-        font-family: 'Inter', sans-serif;;
+        grid-area: standard;
       }
-    }
-     .select-wrapper {
-      position: relative;
-      &::after {
-        content: "\25BE";
-        position: absolute;
-        top: 50%;
-        right: 18px;
-        transform: translateY(-50%);
-        color: #2A2A2A;
+      &.dhl-delivery {
+        grid-area: dhl;
       }
-    }
-    select {
-      width: 100%;
-      @extend %input-style;
-      -webkit-appearance: none;
-      &#city {
-       &:invalid {
-         color: #999999;
-       }
+      &.cardOwner {
+        grid-area: cardOwner;
       }
-    }
-    input {
-      width: 100%;
-      @extend %input-style;
-      &::placeholder {
-        color: #999999;
+      &.cardNum {
+        grid-area: cardNum;
       }
-      &[type="radio"] {
-        all: unset; // 已包含 -webkit-appearance: none;
-        width: 20px;
-        height: 20px;
-        border: 1px solid #222222;
-        border-radius: 50%;
-        // margin-right: 20px;
-        &:checked {
-          box-shadow: inset 0 0 0 6px #2A2A2A;
-          border: 1px solid #2A2A2A;
-        }
+      &.thru {
+        grid-area: thru;
       }
-    }
-    .standard-delivery__wrapper,.dhl-delivery__wrapper {
-      width: 87%;
-      margin-left: 20px;
-    }
-    .standard-delivery__wrapper__title,.dhl-delivery__wrapper__title {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 2px;
-      span:nth-child(1) {
-        font-size: 14px;
-        line-height: 20px;
+      &.csc {
+        grid-area: csc;
       }
-    }
-    .dhl-delivery__wrapper__title {
-      span:nth-child(1) {
-        font-weight: 700;
-      }
-    }
-    &.gender {
-      grid-area: gender;
-    }
-    &.name {
-      grid-area: name;
-    }
-    &.phone {
-      grid-area: phone;
-    }
-    &.email {
-      grid-area: email;
-    }
-    &.city {
-      grid-area: city;
-    }
-    &.address {
-      grid-area: address;
-    }
-    &.standard-delivery {
-      grid-area: standard;
-    }
-    &.dhl-delivery {
-      grid-area: dhl;
-    }
-    &.cardOwner {
-      grid-area: cardOwner;
-    }
-    &.cardNum {
-      grid-area: cardNum;
-    }
-    &.thru {
-      grid-area: thru;
-    }
-    &.csc {
-      grid-area: csc;
     }
   }
-}
 
-.main__cart {
-  border: 1px solid #F0F0F5;
-  border-radius: 8px;
-  padding: 1rem 1rem 0;
-  @include rwd($tablet) {
-    padding: 2rem 1.5rem 0;
-  }
-  &__title {
-    display: none;
+  .main__cart {
+    border: 1px solid #f0f0f5;
+    border-radius: 8px;
+    padding: 1rem 1rem 0;
     @include rwd($tablet) {
-      display: inherit;
-      font-weight: 700;
-      font-size: 1.125rem;
-      line-height: 1.375rem;
-      margin-bottom: 2.125rem;
+      grid-area: cart;
+      grid-column: 8/13;
+      grid-row: 2/5;
+      padding: 2rem 1.5rem 0;
     }
-  }
-  &__list {
-    .main__cart__item {
-      text-align: right;
-      display: grid;
-      grid-template-columns: 1fr auto 2fr;
-      grid-template-rows: repeat(3, 1fr);
-      row-gap: 1.125rem;
-      grid-template-areas: 
-      "img . title"
-      "img . counter"
-      "img . price";
+    &__title {
+      display: none;
       @include rwd($tablet) {
-        text-align: left;
-        grid-template-columns: 1fr 2fr auto 1fr;
-        grid-template-areas: 
-        "img title . price"
-        "img counter . ."
-        "img . . .";
-      }
-      &__img {
-        grid-area: img;
-        width: 100px;
-        height: 100px;
-        img {
-          width: 100%;
-        }
-      }
-      &__title {
-        grid-area: title;
-        span {
-          line-height: 1.5rem;
-        }
-      }
-      &__price {
-        grid-area: price;
-        font-family: 'Nunito Sans', sans-serif;
+        display: inherit;
         font-weight: 700;
+        font-size: 1.125rem;
+        line-height: 1.375rem;
+        margin-bottom: 2.125rem;
+      }
+    }
+    &__list {
+      .main__cart__item {
+        text-align: right;
+        display: grid;
+        grid-template-columns: 1fr auto 2fr;
+        grid-template-rows: repeat(3, 1fr);
+        row-gap: 1.125rem;
+        grid-template-areas:
+          "img . title"
+          "img . counter"
+          "img . price";
         @include rwd($tablet) {
-          text-align: right;
+          text-align: left;
+          grid-template-columns: 1fr 2fr auto 1fr;
+          grid-template-areas:
+            "img title . price"
+            "img counter . ."
+            "img . . .";
+        }
+        &__img {
+          grid-area: img;
+          width: 100px;
+          height: 100px;
+          margin-right: 1.25rem;
+          img {
+            width: 100%;
+          }
+        }
+        &__title {
+          grid-area: title;
+          span {
+            line-height: 1.5rem;
+          }
+        }
+        &__price {
+          grid-area: price;
+          font-family: "Nunito Sans", sans-serif;
+          font-weight: 700;
+          @include rwd($tablet) {
+            text-align: right;
+          }
+        }
+        &__counter {
+          grid-area: counter;
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          @include rwd($tablet) {
+            justify-content: flex-start;
+          }
+          font-family: "Inter", sans-serif;
+          font-weight: 500;
+          font-size: 0.875rem;
+          line-height: 17px;
+          &__minus,
+          &__plus {
+            position: relative;
+            width: 26px;
+            height: 27px;
+            background-color: #f0f0f5;
+            border-radius: 50%;
+          }
+          &__minus {
+            margin-right: 1.875rem;
+          }
+          &__plus {
+            margin-left: 1.875rem;
+          }
+          &__minus::after,
+          &__plus::after {
+            @include calcSigns();
+          }
+          &__plus::before {
+            @include calcSigns();
+            transform: rotate(90deg);
+          }
         }
       }
-      &__counter {
-        grid-area: counter;
+    }
+    &__footer {
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+      &__fee,
+      &__total {
         display: flex;
-        align-items: center;
-        justify-content: flex-end;
+        justify-content: space-between;
+        border-top: 1px solid #f0f0f5;
+        padding: 1rem 0;
         @include rwd($tablet) {
-          justify-content: flex-start;
+          padding: 1rem 0 2rem;
         }
-        font-family: 'Inter', sans-serif;
-        font-weight: 500;
-        font-size: 0.875rem;
-        line-height: 17px;
-        &__minus, &__plus {
-          position: relative;
-          width: 26px;
-          height: 27px;
-          background-color: #F0F0F5;
-          border-radius: 50%;
-        }
-        &__minus {
-          margin-right: 1.875rem;
-        }
-        &__plus {
-          margin-left: 1.875rem;
-        }
-        &__minus::after, &__plus::after {
-          @include calcSigns();
-        }
-        &__plus::before {
-          @include calcSigns();
-          transform: rotate(90deg);
+        .fee {
+          line-height: 17px;
+          font-family: "Nunito Sans", sans-serif;
+          font-weight: 700;
         }
       }
     }
   }
-  &__footer {
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    &__fee, &__total {
-      display: flex;
-      justify-content: space-between;
-      border-top: 1px solid #F0F0F5;
-      padding: 1rem 0;
-      @include rwd($tablet) {
-        padding: 1rem 0 2rem;
+
+  .main__button {
+    display: flex;
+    margin: 2rem 0;
+    @include rwd($tablet) {
+      grid-area: buttons;
+      grid-column: 1/7;
+      grid-row: 4/5;
+      margin: 0;
+    }
+    padding-top: 1.5rem;
+    border-top: 1px solid #e6e6eb;
+    &__previous,
+    &__next {
+      button {
+        all: unset;
+        width: 9.75rem;
+        height: 2.875rem;
+        border-radius: 0.5rem;
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        @include rwd($tablet) {
+          width: 10.875rem;
+        }
       }
-      .fee {
-        line-height: 17px;
-        font-family: 'Nunito Sans', sans-serif;
-        font-weight: 700;
+    }
+    &__next {
+      &.stepOne { 
+        // 下一步在第一個step時的樣式
+        width: 100%;
+        @include rwd($tablet) {
+          width: 10.875rem;
+        }
+        button {
+          width: 100%;
+          @include rwd($tablet) {
+          width: 10.875rem;
+          }
+        }
+      }
+      button {
+        background-color: #f67599;
+        color: #ffffff;
+        text-align: center;
       }
     }
   }
