@@ -99,9 +99,9 @@
             <div class="part d-none">
               <h3 class="main__form-title">運送方式</h3>
               <div class="main__form__grid-area-part-two">
-                <div class="form-row standard-delivery">
-                  <label for="standard-delivery" class="standard-delivery">
-                    <input id="standard-delivery" type="radio" name="delivery">
+                <div class="form-row delivery standard-delivery">
+                  <label for="standard-delivery" class="standard-delivery delivery-active">
+                    <input id="standard-delivery" type="radio" name="delivery" checked>
                     <div class="standard-delivery__wrapper">
                       <div class="standard-delivery__wrapper__title">
                         <span>標準運送</span>
@@ -113,13 +113,13 @@
                     </div>
                   </label>
                 </div>
-                <div class="form-row dhl-delivery">
+                <div class="form-row delivery dhl-delivery">
                   <label for="dhl-delivery" class="dhl-delivery">
                     <input id="dhl-delivery" type="radio" name="delivery">
                     <div class="dhl-delivery__wrapper">
                       <div class="dhl-delivery__wrapper__title">
                         <span>DHL 貨運</span>
-                        <span class="dhl-delivery__wrapper__fee">500</span>
+                        <span class="dhl-delivery__wrapper__fee currencySymbol">500</span>
                       </div>
                       <div class="dhl-delivery__wrapper__takesTime">
                         <span>48小時內送達</span>
@@ -166,7 +166,7 @@
               <span>破壞補丁修身牛仔褲</span>
             </div>
             <div class="main__cart__item__price">
-              3999
+              <span class="price currencySymbol">3999</span>
             </div>
             <div class="main__cart__item__counter">
               <div class="main__cart__item__counter__minus"></div>
@@ -182,7 +182,7 @@
               <span>刷色直筒牛仔褲</span>
             </div>
             <div class="main__cart__item__price">
-              1299
+              <span class="price currencySymbol">1299</span>
             </div>
             <div class="main__cart__item__counter">
               <div class="main__cart__item__counter__minus"></div>
@@ -198,7 +198,7 @@
           </div>
           <div class="main__cart__footer__total">
             <div class="title">小計</div>
-            <div class="fee"><span class="fee">5298</span></div>
+            <div class="total"><span class="total currencySymbol">5298</span></div>
           </div>
         </div>
       </div>

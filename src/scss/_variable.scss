@@ -1,3 +1,6 @@
 // rwd $width
 $pc: 992px;
 $tablet: 375px;
+
+// currency symbol
+$currency: '\0024'; // 美金符號，為了讓後續如需更改符號，可以一次全改

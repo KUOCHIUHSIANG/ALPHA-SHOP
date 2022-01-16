@@ -198,6 +198,10 @@ main.container {
           font-size: 12px;
           line-height: 16px;
           color: #000000;
+          &.delivery-active {
+            // 改變所選運送方式的外框顏色
+            border-color: #2a2a2a;
+          }
         }
         &.standard-delivery {
           font-family: "Inter", sans-serif;
@@ -364,6 +368,7 @@ main.container {
           @include rwd($tablet) {
             text-align: right;
           }
+          
         }
         &__counter {
           grid-area: counter;
@@ -414,7 +419,7 @@ main.container {
         @include rwd($tablet) {
           padding: 1rem 0 2rem;
         }
-        .fee {
+        .fee, .total {
           line-height: 17px;
           font-family: "Nunito Sans", sans-serif;
           font-weight: 700;
@@ -468,5 +473,12 @@ main.container {
         text-align: center;
       }
     }
+  }
+}
+
+// common css
+.currencySymbol {
+	&::before {
+    content: $currency;
   }
 }

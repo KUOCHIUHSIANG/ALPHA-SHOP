@@ -373,6 +373,10 @@ main.container .main__form .form-row > label.standard-delivery, main.container .
   color: #000000;
 }
 
+main.container .main__form .form-row > label.standard-delivery.delivery-active, main.container .main__form .form-row > label.dhl-delivery.delivery-active {
+  border-color: #2a2a2a;
+}
+
 main.container .main__form .form-row > label.standard-delivery {
   font-family: "Inter", sans-serif;
 }
@@ -725,7 +729,7 @@ main.container .main__cart__footer__fee, main.container .main__cart__footer__tot
   }
 }
 
-main.container .main__cart__footer__fee .fee, main.container .main__cart__footer__total .fee {
+main.container .main__cart__footer__fee .fee, main.container .main__cart__footer__fee .total, main.container .main__cart__footer__total .fee, main.container .main__cart__footer__total .total {
   line-height: 17px;
   font-family: "Nunito Sans", sans-serif;
   font-weight: 700;
@@ -792,5 +796,9 @@ main.container .main__button__next button {
   background-color: #f67599;
   color: #ffffff;
   text-align: center;
+}
+
+.currencySymbol::before {
+  content: "$";
 }
 /*# sourceMappingURL=main.css.map */
